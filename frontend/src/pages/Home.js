@@ -73,9 +73,7 @@ function Home() {
             <p ref={welcomeRef} className={styles.head}>Welcome to our website</p>
             <p ref={journeyRef} className={styles.journey}>Your spiritual journey begins here</p>
             <p ref={bookRef} className={styles.book}>Book poojas and services online 🙏</p>
-            <a href="/pundits" className={styles.punditLink}>
-        👉 Book a Pundit
-      </a>
+           
           </div>
           
 

@@ -11,8 +11,6 @@ import Admin from "./pages/Admin";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 
-import PunditList from "./pages/PunditList";
-import PunditDetails from "./pages/PunditDetails";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import GaneshPooja from "./components/poojas/GaneshPooja";
@@ -50,8 +48,7 @@ function App() {
               path="/mahamrityunjaya-pooja"
               element={<MahaMrityunjayaPooja />}
             />
-            <Route path="/pundits" element={<PunditList />} />
-            <Route path="/pundit/:id" element={<PunditDetails />} />
+      
           </Routes>
         </Router>
       </AuthProvider>
