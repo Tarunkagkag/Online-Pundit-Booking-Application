@@ -45,13 +45,8 @@ function Navbar() {
                   Contact Us
                 </Link>
               </li>
-              {/* {user.role === "admin" && (
-                <li>
-                  <Link className={styles.navLink} to="/admin">
-                    Admin
-                  </Link>
-                </li>
-              )} */}
+              
+
               <li>
                 <button className={styles.btn} onClick={handleLogout}>
                   Logout

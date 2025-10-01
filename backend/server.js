@@ -23,6 +23,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/festivals", festivalRoutes);
 app.use("/api/testimonials", testimonialRoutes);
+app.use("/api/pundits", require("./routes/punditRoutes"));
+
 
 // DB + Server
 mongoose

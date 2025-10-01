@@ -1,23 +1,34 @@
+
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import API from "../api";
 import styles from "./Register.module.css";
-import { Link} from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("user");
+  const [expertise, setExpertise] = useState("");
+  const [experience, setExperience] = useState("");
+  const [phone, setPhone] = useState("");
+
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await API.post("/auth/register", { name, email, password });
+      await API.post("/auth/register", {
+        name,
+        email,
+        password,
+        role,
+        ...(role === "pundit" && { expertise, experience, phone })
+      });
       alert("✅ Registration successful! Now login.");
       navigate("/login");
     } catch (err) {
-      alert("❌ " + err.response.data.message);
+      alert("❌ " + err.response?.data?.message || "Something went wrong");
     }
   };
 
@@ -48,12 +59,50 @@ function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+
+            {/* Role Dropdown */}
+            <select
+              className={styles.input}
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            >
+              <option value="user">User</option>
+              <option value="pundit">Pundit</option>
+            </select>
+
+            {/* Extra fields if pundit */}
+            {role === "pundit" && (
+              <>
+                <input
+                  className={styles.input}
+                  type="text"
+                  placeholder="Expertise"
+                  value={expertise}
+                  onChange={(e) => setExpertise(e.target.value)}
+                />
+                <input
+                  className={styles.input}
+                  type="text"
+                  placeholder="Experience (years)"
+                  value={experience}
+                  onChange={(e) => setExperience(e.target.value)}
+                />
+                <input
+                  className={styles.input}
+                  type="text"
+                  placeholder="Phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </>
+            )}
+
             <button className={styles.button} type="submit">
               Register
             </button>
             <p className={styles.loginLink}>
-          Already have an account? <Link to="/Login">Login</Link>
-        </p>
+              Already have an account? <Link to="/Login">Login</Link>
+            </p>
           </div>
         </div>
       </form>

@@ -1,7 +1,8 @@
+
 const express = require("express");
 const { getAllUsers } = require("../controllers/userController");
 const { auth, isAdmin } = require("../middleware/authMiddleware");
-const User = require("../models/User"); // ✅ Make sure User model is imported
+const User = require("../models/User");
 
 const router = express.Router();
 
@@ -17,8 +18,22 @@ router.delete("/:id", auth, isAdmin, async (req, res) => {
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "User deleted successfully" });
   } catch (err) {
-    console.error(err); // ✅ log the error
+    console.error(err);
     res.status(500).json({ message: "Server error while deleting user" });
+  }
+});
+
+
+router.get("/pundits/:id", async (req, res) => {
+  try {
+    const pundit = await User.findById(req.params.id);
+    if (!pundit || pundit.role !== "pundit") {
+      return res.status(404).json({ message: "Pundit not found" });
+    }
+    res.status(200).json(pundit);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error while fetching pundit" });
   }
 });
 

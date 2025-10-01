@@ -123,31 +123,45 @@ const handleDeleteContact = async (id) => {
         <button className={activeTab === "testimonials" ? styles.activeTab : ""} onClick={() => setActiveTab("testimonials")}>Testimonials</button>
       </div>
 
-      {/* Users Table */}
       {activeTab === "users" && (
-        <div className={styles.tableWrapper}>
-          <h2>Users</h2>
-          <table className={styles.table}>
-            <thead>
-              <tr><th>Name</th><th>Email</th><th>Role</th>
-              <th>Action</th></tr>
-            </thead>
-            <tbody>
-              {users.map((user, i) => (
-                <tr key={i}><td>{user.name}</td><td>{user.email}</td><td>{user.role}</td>
-                <td>
+  <div className={styles.tableWrapper}>
+    <h2>Users</h2>
+    <table className={styles.table}>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Expertise</th>
+          <th>Experience</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map((user, i) => (
+          <tr key={i}>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
+            <td>{user.role}</td>
+            <td>{user.role === "pundit" ? user.expertise : "-"}</td>
+            <td>{user.role === "pundit" ? user.experience : "-"}</td>
+            <td>{user.role === "pundit" ? user.phone : "-"}</td>
+            <td>
               <button
                 className={styles.deleteBtn}
                 onClick={() => handleDeleteUser(user._id)}
               >
                 Delete
               </button>
-            </td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+
 
      
       {activeTab === "contacts" && (

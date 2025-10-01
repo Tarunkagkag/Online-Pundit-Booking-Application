@@ -1,4 +1,3 @@
-
 const crypto = require("crypto");
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
@@ -69,15 +68,15 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
-// ✅ Register
+
 exports.register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role, expertise, experience, phone } = req.body;
     if (!name || !email || !password)
       return res.status(400).json({ message: "All fields are required" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, password: hashedPassword });
+    const user = new User({ name, email, password: hashedPassword, role, expertise, experience, phone });
 
     await user.save();
     res.json({ message: "✅ User registered successfully" });
