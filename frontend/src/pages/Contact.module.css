@@ -1,0 +1,133 @@
+/* .container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input,
+textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  background: #2a5298;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #1e3c72;
+}
+.form select,
+.form input[type="date"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+} */
+/* Container */
+.container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Heading */
+.container h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Inputs & Select */
+.form input,
+.form select,
+.form textarea {
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s ease;
+  background: #fafafa;
+}
+
+/* Focus Effect */
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border-color: #ff6b6b;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(255, 107, 107, 0.4);
+}
+
+/* Textarea */
+.form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Button */
+.form button {
+  padding: 14px;
+  background: linear-gradient(135deg, #ff6b6b, #ff9a9e);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.form button:hover {
+  background: linear-gradient(135deg, #ff4b4b, #ff7676);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 107, 107, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    margin: 30px 15px;
+    padding: 25px;
+  }
+
+  .container h2 {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,109 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* -ms-overflow-style: none;
+  scrollbar-width: none; */
+}
+/* .container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+} */
+
+.textOverlay {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: white;
+}
+
+.head {
+  font-size: 2rem;
+  font-weight: bold;
+  height: auto;
+  width: auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #e14c1fcc;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  color: white;
+}
+.image {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 680px;
+}
+.journey {
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.book {
+  font-size: 1.25rem;
+  color: white;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+.second {
+  padding: 60px 20px;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: black;
+  color: white;
+}
+
+.poojaImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px; /* rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* shadow */
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.poojaImage:hover {
+  transform: scale(1.05); /* zoom effect on hover */
+}
+.poojaHeading {
+  font-weight: bold;
+  margin-top: 10px;
+  transition: color 0.3s;
+}
+
+.poojaHeading:hover {
+  color: #d9534f;
+}
+.third {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: white;
+}
+
+.footer {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: orangered;
+}
+.liveStreaming {
+  background: linear-gradient(to right, #111, #222);
+  color: white;
+}
+.punditLink {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #ff6600;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.punditLink:hover {
+  background: #e65c00;
+}
