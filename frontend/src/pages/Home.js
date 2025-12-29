@@ -23,12 +23,11 @@ function Home() {
   const [festivals, setFestivals] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
   const [pundits, setPundits] = useState([]);
-
   const welcomeRef = useRef(null);
   const journeyRef = useRef(null);
   const bookRef = useRef(null);
 
-  // Slider auto change
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
@@ -36,7 +35,7 @@ function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  // GSAP animation
+
   useGSAP(() => {
     const tl = gsap.timeline({ delay: 2 });
     tl.from(welcomeRef.current, { y: -300, opacity: 0, duration: 1.5, ease: "power3.out" })
@@ -44,7 +43,7 @@ function Home() {
       .from(bookRef.current, { y: 300, opacity: 0, duration: 1.5, ease: "power3.out" }, "-=1");
   }, []);
 
-  // Fetch data from backend
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -68,7 +67,7 @@ function Home() {
     <div className={styles.container}>
       <Stairs>
         <Navbar />
-        <marquee behavior="" direction="left" scrollamount="10">
+        <marquee behavior="" direction="left" scrollamount="5">
           मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥ 47 ॥ तुम्हें अपना कर्म करने का अधिकार है, किन्तु कर्मफल के अधिकारी नहीं हो।
         </marquee>
 
@@ -110,7 +109,7 @@ function Home() {
       {/* Pundits Section */}
       <div className={styles.punditSection} style={{ padding: "5% 0", backgroundColor: "#f0f0f0" }}>
         <div className="container">
-          <h2 className="text-center mb-4">📿 Our Expert Pundits</h2>
+          <h2 className="text-center mb-4 text-black">📿 Our Expert Pundits</h2>
           <div className="row">
             {pundits.length === 0 ? (
               <p className="text-center">No pundits available yet.</p>
@@ -124,7 +123,7 @@ function Home() {
                     {/* <Link to={`/pundit/${pundit._id}`} className="btn btn-primary mt-2">
                       View Details
                     </Link> */}
-                    <Link to={`/Contact`} className="btn btn-primary mt-2">
+                    <Link to={`/Contact`} className={styles.btn}>
                       Contact
                     </Link>
                   </div>
@@ -165,10 +164,10 @@ function Home() {
       {/* Blog Section */}
       <div className={styles.blogSection} style={{ padding: "5%", backgroundColor: "#f7f7f7" }}>
         <div className="container">
-          <h2 className="text-center mb-5" style={{ fontWeight: 700 }}>Spiritual Insights & Blog</h2>
+          <h2 className="text-center mb-5 text-black" style={{ fontWeight: 700 }}>Spiritual Insights & Blog</h2>
           <div className="row">
             {[
-              { title: "Importance of Ganesh Pooja", snippet: "Ganesh Pooja helps remove obstacles and brings prosperity. Learn the rituals, timings, and benefits.", img: "https://images.news18.com/ibnlive/uploads/2025/08/image-2025-08-97a1b678f146274e432f9d798b39b7d4.jpg", link: "/blog/ganesh-pooja" },
+              { title: "Importance of Ganesh Pooja", snippet: "Ganesh Pooja helps remove obstacles and brings prosperity. Learn the rituals, timings, and benefits.", img: "https://images.news18.com/ibnlive/uploads/2025/08/image-2025-08-97a1b678f146274e432f9d798b39b7d4.jpg", link: "/ganesh-pooja-blog" },
               { title: "Benefits of Lakshmi Pooja", snippet: "Lakshmi Pooja invites wealth and abundance into your life.", img: "https://cdn.pixabay.com/video/2023/11/11/188672-883619720_tiny.jpg", link: "/blog/lakshmi-pooja" },
               { title: "Power of Maha Mrityunjaya Pooja", snippet: "A powerful ritual for health, protection, and spiritual growth.", img: "https://cdn.99pandit.com/images/blogsimg/Maha-Mrityunjaya-Homam-1.webp", link: "/blog/mahamrityunjaya-pooja" },
             ].map((blog, i) => (
@@ -178,7 +177,7 @@ function Home() {
                   <div className="card-body">
                     <h5 className="card-title">{blog.title}</h5>
                     <p className="card-text">{blog.snippet}</p>
-                    <Link to={blog.link} className="btn btn-primary">Read More</Link>
+                    <Link to={blog.link} className={styles.btn}>Read More</Link>
                   </div>
                 </div>
               </div>
@@ -206,29 +205,34 @@ function Home() {
     <div className="row">
       {[
         {
-          id: "iIFeXsS6HQo",
-          title: "ISKCON Bangalore Live Darshan",
+    id: "dSHbDZih20c",
+    title: "Mahakal Darshan",
+  },
+  {
+    id: "DFVqswyYsyo",
+    title: "Somnath Temple Live Darshan",
+  },
+  {
+    id: "4zrvQhdoKow",
+    title: "Siddhivinayak Live Darshan",
+  },
+  {
+    id: "XN11vc5Y87k",
+    title: "Dwarkadhish Mandir Live Darshan",
+  },
+        {
+          id: "j9iET_VIM98",
+          title: "Shirdi Sai Baba Live Darshan",
         },
         {
-          id: "2nUrc1wE6do",
-          title: "Somnath Temple Live Darshan",
+          id: "66QBd7VTw9c",
+          title: "Kashi Vishwanath Temple Live Darshan",
         },
-        {
-          id: "iIFeXsS6HQo",
-          title: "Siddhivinayak Live Darshan",
-        },
-        {
-          id: "QCxuBdv5Mww",
-          title: "Dwarkadhish Mandir Live Darshan",
-        },
-         {
-          id: "iIFeXsS6HQo",
-          title: "Siddhivinayak Live Darshan",
-        },
-        {
-          id: "QCxuBdv5Mww",
-          title: "Dwarkadhish Mandir Live Darshan",
-        },
+        
+   
+ 
+        
+         
         
       ].map((live, i) => (
         <div className="col-md-4 mb-4" key={i}>
@@ -261,11 +265,12 @@ function Home() {
 
 
 
+
       {/* Upcoming Festivals */}
       <div className={styles.third}>
         <div className="container py-5">
           <div className="text-center mb-5">
-            <h2>📅 Upcoming Festivals</h2>
+            <h2 className={styles.blk}>📅 Upcoming Festivals</h2>
             <div className="row mt-4">
               {festivals.length === 0 ? <p>No festivals added yet.</p> : festivals.map((f, i) => (
                 <div key={i} className="col-md-4 mb-3">
@@ -280,7 +285,7 @@ function Home() {
 
           {/* Devotee Testimonials */}
           <div className="text-center">
-            <h2>🌸 What Devotees Say</h2>
+            <h2 className={styles.blk}>🌸 What Devotees Say</h2>
             <div className="row mt-4">
               {testimonials.length === 0 ? <p>No testimonials yet.</p> : testimonials.map((t, i) => (
                 <div key={i} className="col-md-4 mb-3">

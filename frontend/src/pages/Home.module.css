@@ -17,7 +17,18 @@
   gap: 0.5rem;
   color: white;
 }
-
+.btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #d35400;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
 .head {
   font-size: 2rem;
   font-weight: bold;
@@ -106,4 +117,8 @@
 
 .punditLink:hover {
   background: #e65c00;
+}
+
+.blk {
+  color: black;
 }

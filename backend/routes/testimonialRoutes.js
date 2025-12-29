@@ -5,7 +5,7 @@ const { getTestimonials, addTestimonial, deleteTestimonial } = require("../contr
 
 router.get("/", getTestimonials);
 router.post("/", addTestimonial);
-router.delete("/:id", deleteTestimonial); // <-- delete route
+router.delete("/:id", deleteTestimonial); 
 
 module.exports = router;
 

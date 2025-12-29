@@ -6,10 +6,10 @@ const User = require("../models/User");
 
 const router = express.Router();
 
-// Admin only: get all users
+
 router.get("/", auth, isAdmin, getAllUsers);
 
-// Admin only: delete a user
+
 router.delete("/:id", auth, isAdmin, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);

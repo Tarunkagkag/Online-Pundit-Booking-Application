@@ -14,7 +14,7 @@ const sendEmail = async (to, subject, text) => {
       secure: true,
       auth: {
         user: "en24ca5030171@medicaps.ac.in", // your email
-        pass: "uzmujitiatdbghao",             // app password
+        pass: "uzmujitiatdbghao",             
       },
       tls: {
         rejectUnauthorized: false,

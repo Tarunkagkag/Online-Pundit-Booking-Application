@@ -1,0 +1,68 @@
+/* Full page background */
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://northindiapujari.com/wp-content/uploads/2025/03/banner2.webp");
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+/* OTP card */
+.card {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.otpContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.otpInput {
+  width: 45px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.otpInput:focus {
+  border-color: #d35400;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #d35400;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  /* transition: background-color 1s; */
+}
+
+.button:hover {
+  background-color: #da6c23;
+}

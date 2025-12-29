@@ -1,7 +1,5 @@
 
 const Festival = require("../models/Festival");
-
-// Get all festivals
 exports.getFestivals = async (req, res) => {
   try {
     const festivals = await Festival.find();
@@ -11,7 +9,7 @@ exports.getFestivals = async (req, res) => {
   }
 };
 
-// Add a new festival
+
 exports.addFestival = async (req, res) => {
   try {
     const { festival, date } = req.body;
@@ -23,7 +21,7 @@ exports.addFestival = async (req, res) => {
   }
 };
 
-// Delete a festival
+
 exports.deleteFestival = async (req, res) => {
   try {
     const deleted = await Festival.findByIdAndDelete(req.params.id);

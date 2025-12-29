@@ -5,7 +5,7 @@ const { getFestivals, addFestival, deleteFestival } = require("../controllers/fe
 
 router.get("/", getFestivals);
 router.post("/", addFestival);
-router.delete("/:id", deleteFestival); // <-- delete route
+router.delete("/:id", deleteFestival); 
 
 module.exports = router;
 

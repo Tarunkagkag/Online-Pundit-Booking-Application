@@ -1,3 +1,4 @@
+
 const jwt = require("jsonwebtoken");
 
 function auth(req, res, next) {
@@ -6,11 +7,12 @@ function auth(req, res, next) {
 
   jwt.verify(token.split(" ")[1], process.env.JWT_SECRET, (err, decoded) => {
     if (err) return res.status(403).json({ message: "Invalid token" });
-    req.user = decoded;
+    req.user = decoded; 
     next();
   });
 }
 
+// Only allow admin users
 function isAdmin(req, res, next) {
   if (req.user.role !== "admin") {
     return res.status(403).json({ message: "Access denied: Admins only" });
@@ -18,4 +20,12 @@ function isAdmin(req, res, next) {
   next();
 }
 
-module.exports = { auth, isAdmin };
+// Only allow pundit users
+function isPundit(req, res, next) {
+  if (req.user.role !== "pundit") {
+    return res.status(403).json({ message: "Access denied: Pundits only" });
+  }
+  next();
+}
+
+module.exports = { auth, isAdmin, isPundit };

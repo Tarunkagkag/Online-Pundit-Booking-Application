@@ -60,17 +60,17 @@ function Register() {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {/* Role Dropdown */}
+            
             <select
               className={styles.input}
               value={role}
               onChange={(e) => setRole(e.target.value)}
             >
-              <option value="user">User</option>
-              <option value="pundit">Pundit</option>
+              <option className={styles.opt} value="user">User</option>
+              <option className={styles.opt} value="pundit">Pundit</option>
             </select>
 
-            {/* Extra fields if pundit */}
+           
             {role === "pundit" && (
               <>
                 <input

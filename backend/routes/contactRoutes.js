@@ -1,17 +1,18 @@
 const express = require("express");
+const router = express.Router();
+
 const Contact = require("../models/Contact");
 const { createContact, getContacts } = require("../controllers/contactController");
 const { auth, isAdmin } = require("../middleware/authMiddleware");
 
-const router = express.Router();
 
-// Public: anyone can submit a contact message
+
 router.post("/", createContact);
 
-// Admin only: view all contacts
+
 router.get("/", auth, isAdmin, getContacts);
 
-// Admin only: delete a contact message
+
 router.delete("/:id", auth, isAdmin, async (req, res) => {
   try {
     await Contact.findByIdAndDelete(req.params.id);
@@ -22,4 +23,3 @@ router.delete("/:id", auth, isAdmin, async (req, res) => {
 });
 
 module.exports = router;
-
