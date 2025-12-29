@@ -13,8 +13,8 @@ const sendEmail = async (to, subject, text) => {
       port: 465,
       secure: true,
       auth: {
-        user: "en24ca5030171@medicaps.ac.in", // your email
-        pass: "uzmujitiatdbghao",             
+        user: "", // your email
+        pass: "uzmujitiatdbghao", //your app password           
       },
       tls: {
         rejectUnauthorized: false,
@@ -22,7 +22,7 @@ const sendEmail = async (to, subject, text) => {
     });
 
     let info = await transporter.sendMail({
-      from: `"Pundit App" <en24ca5030171@medicaps.ac.in>`,
+      from: `"Pundit App" <your email>`,// sender address
       to,       // use the 'to' parameter
       subject,  // use the 'subject' parameter
       text,     // use the 'text' parameter
