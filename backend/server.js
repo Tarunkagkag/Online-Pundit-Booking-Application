@@ -61,21 +61,16 @@ const app = express();
 ======================= */
 app.use(express.json());
 
-// Configure CORS to allow local dev and Netlify frontend
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",                         // Local development
-      "https://online-pundit-booking.netlify.app"      // Your Netlify frontend
-    ],
-    credentials: true,
-  })
-);
+// Allowed origins for CORS
+const allowedOrigins = [
+  "http://localhost:3000",                         // local dev
+  "https://online-pundit-booking.netlify.app"      // Netlify frontend
+];
 
 app.use(
   cors({
     origin: function(origin, callback) {
-      // allow requests with no origin like mobile apps or curl
+      // Allow requests with no origin (like Postman or mobile apps)
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.indexOf(origin) === -1) {
@@ -87,6 +82,7 @@ app.use(
     credentials: true,
   })
 );
+
 /* =======================
    ROUTES
 ======================= */
