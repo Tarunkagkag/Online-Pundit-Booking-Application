@@ -1,0 +1,10 @@
+[build]
+  base = "frontend"             # frontend folder
+  publish = "frontend/build"    # React build output
+  command = "npm run build"     # React build command
+
+[context.production.environment]
+  REACT_APP_API_URL = "https://online-pundit-booking-application-1.onrender.com"
+
+[build.environment]
+  NODE_VERSION = "20"           # Node runtime
