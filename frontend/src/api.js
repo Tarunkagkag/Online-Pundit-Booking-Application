@@ -15,12 +15,10 @@
 // export default API;
 import axios from "axios";
 
-// Use environment variable for backend URL
 const API = axios.create({
-  baseURL: `${process.env.REACT_APP_API_URL}/api`, // ← live backend
+  baseURL: "https://online-pundit-booking-application-1.onrender.com/api",
 });
 
-// Attach token from localStorage if it exists
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
   if (token) req.headers.Authorization = `Bearer ${token}`;
@@ -28,3 +26,4 @@ API.interceptors.request.use((req) => {
 });
 
 export default API;
+
