@@ -40,11 +40,13 @@
 //     );
 //   })
 //   .catch((err) => console.error("❌ MongoDB connection error:", err));
+// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
+// Import your route files
 const contactRoutes = require("./routes/contactRoutes");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -59,13 +61,14 @@ const app = express();
 ======================= */
 app.use(express.json());
 
+// Configure CORS to allow local dev and Netlify frontend
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",               // local dev
-      "https://online-pundit-booking.netlify.app"   // LIVE frontend (change if needed)
+      "http://localhost:3000",                         // Local development
+      "https://online-pundit-booking.netlify.app"      // Your Netlify frontend
     ],
-    credentials: true
+    credentials: true,
   })
 );
 
@@ -73,9 +76,10 @@ app.use(
    ROUTES
 ======================= */
 app.get("/", (req, res) => {
-  res.send("Pundit Backend Running 🚀");
+  res.send("✅ Pundit Backend Running!");
 });
 
+// API Routes
 app.use("/api/contacts", contactRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
@@ -89,7 +93,10 @@ app.use("/api/pundits", punditRoutes);
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("✅ MongoDB connected");
     app.listen(PORT, () => {
