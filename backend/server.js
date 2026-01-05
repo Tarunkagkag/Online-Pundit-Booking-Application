@@ -41,12 +41,13 @@
 //   })
 //   .catch((err) => console.error("❌ MongoDB connection error:", err));
 // server.js
+// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-// Import your route files
+// Import your routes
 const contactRoutes = require("./routes/contactRoutes");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -61,27 +62,26 @@ const app = express();
 ======================= */
 app.use(express.json());
 
-// Allowed origins for CORS
+// ✅ CORS configuration: only one middleware
 const allowedOrigins = [
-  "http://localhost:3000",                         // local dev
-  "https://online-pundit-booking.netlify.app"      // Netlify frontend
+  "http://localhost:3000",
+  "https://online-pundit-booking.netlify.app"
 ];
 
-app.use(
-  cors({
-    origin: function(origin, callback) {
-      // Allow requests with no origin (like Postman or mobile apps)
-      if (!origin) return callback(null, true);
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  
+  // Handle preflight requests
+  if (req.method === "OPTIONS") return res.sendStatus(200);
 
-      if (allowedOrigins.indexOf(origin) === -1) {
-        const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
-        return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-    },
-    credentials: true,
-  })
-);
+  next();
+});
 
 /* =======================
    ROUTES
@@ -90,7 +90,7 @@ app.get("/", (req, res) => {
   res.send("✅ Pundit Backend Running!");
 });
 
-// API Routes
+// API routes
 app.use("/api/contacts", contactRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
@@ -103,17 +103,14 @@ app.use("/api/pundits", punditRoutes);
 ======================= */
 const PORT = process.env.PORT || 5000;
 
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("✅ MongoDB connected");
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB connection error:", err);
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log("✅ MongoDB connected");
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
   });
+})
+.catch((err) => console.error("❌ MongoDB connection error:", err));
