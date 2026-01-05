@@ -63,7 +63,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",               // local dev
-      "https://pundit-booking.netlify.app"   // LIVE frontend (change if needed)
+      "https://online-pundit-booking.netlify.app"   // LIVE frontend (change if needed)
     ],
     credentials: true
   })
