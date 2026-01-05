@@ -46,10 +46,8 @@ console.log("🔥 SERVER.JS VERSION 2026-01-05 RUNNING");
 
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 require("dotenv").config();
 
-// Import your routes
 const contactRoutes = require("./routes/contactRoutes");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -64,17 +62,21 @@ const app = express();
 ======================= */
 app.use(express.json());
 
-// ✅ CORS configuration: only one middleware
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://online-pundit-booking.netlify.app"
-];
-
+// ✅ MANUAL CORS (WORKS 100%)
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://online-pundit-booking.netlify.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://online-pundit-booking.netlify.app"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", "true");
 
   if (req.method === "OPTIONS") {
     return res.sendStatus(200);
@@ -90,7 +92,10 @@ app.get("/", (req, res) => {
   res.send("✅ Pundit Backend Running!");
 });
 
-// API routes
+app.get("/test", (req, res) => {
+  res.json({ status: "CORS WORKING" });
+});
+
 app.use("/api/contacts", contactRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
@@ -103,14 +108,12 @@ app.use("/api/pundits", punditRoutes);
 ======================= */
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => {
-  console.log("✅ MongoDB connected");
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-  });
-})
-.catch((err) => console.error("❌ MongoDB connection error:", err));
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("✅ MongoDB connected");
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
